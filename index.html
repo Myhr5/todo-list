@@ -3,8 +3,49 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Todo List Newbies</title>
+
+    <!-- Google fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Phosphor
+      <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css"
+    /> -->
   </head>
-  <body></body>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <img src="./assets/todo-log.svg" alt="" />
+      </div>
+
+      <div class="main">
+        <form class="new_task_form" action="">
+          <input type="text" placeholder="Adicione uma nova tarefa" />
+          <button type="submit">Criar</button>
+
+          <div class="tasks_counter">
+            <p>
+              <strong>Tarefas criadas</strong>
+              <span>4</span>
+            </p>
+            <p>
+              <strong>Tarefas concluídas</strong>
+              <span>3</span>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
