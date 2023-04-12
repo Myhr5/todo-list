@@ -10,7 +10,9 @@
   --blue-500: #4e6ede;
   --blue-600: #3352c3;
   --green-500: #26c277;
+  --green-700: #093d24;
   --yellow-500: #ffd231;
+  --yellow-700: #644f04;
 }
 
 :focus {
@@ -129,3 +131,52 @@ header {
   background: var(--black);
   color: var(--gray-200);
 } */
+
+/* ------------------ TASKS COUNTER BELOW ------------------- */
+
+.tasks_counter {
+  max-width: 46rem;
+  padding: 1.25rem;
+  margin: 48px auto;
+
+  border-top: 3px solid var(--gray-400);
+  border-bottom: 3px solid var(--gray-400);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.tasks_counter strong {
+  font-size: 0, 875rem;
+}
+
+.tasks_counter span {
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 8px;
+}
+
+.count {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* ------------------ TASKS COUNTER COLORS BELOW ------------------- */
+
+.all_tasks {
+  color: var(--yellow-500);
+}
+
+.all_tasks span {
+  background-color: var(--yellow-500);
+  color: var(--black);
+}
+
+.done_tasks {
+  color: var(--green-500);
+}
+
+.done_tasks span {
+  background-color: var(--green-500);
+  color: var(--black);
+}
