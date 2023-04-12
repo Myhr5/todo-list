@@ -49,6 +49,8 @@ button:hover {
   cursor: pointer;
 } */
 
+/* ------------------ WRAPPER BELOW ------------------- */
+
 .wrapper {
   max-width: 46rem;
   margin: 0 auto;
@@ -71,3 +73,12 @@ button:hover {
 /* .wrapper{
     grid-template-columns: 1fr;
 } */
+
+/* ------------------ HEADER BELOW ------------------- */
+
+header {
+  display: flex;
+  justify-content: center;
+
+  padding: 4.75rem 0;
+}
