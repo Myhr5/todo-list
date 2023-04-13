@@ -39,8 +39,12 @@
 
       <main>
         <form class="new_task_form" action="">
-          <input type="text" placeholder="Adicione uma nova tarefa" />
-          <button type="submit">
+          <input
+            id="task_input"
+            type="text"
+            placeholder="Adicione uma nova tarefa"
+          />
+          <button type="submit" onclick="addTask(event)">
             Criar <i class="ph-bold ph-plus-circle"></i>
           </button>
         </form>
@@ -64,23 +68,37 @@
           </div>
         </section>
 
-        <ul class="tasks_list">
+        <ul id="tasks_list" class="tasks_list">
           <li class="task todo">
             <div>
-              <i class="ph-duotone ph-circle check_btn"></i>
+              <i
+                class="ph-duotone ph-circle check_btn"
+                onclick="completeTask(event)"
+              ></i>
               <p>Limpar gaiolas</p>
             </div>
-            <i class="ph-duotone ph-trash delete_btn"></i>
+            <i
+              class="ph-duotone ph-trash delete_btn"
+              onclick="deleteTask(event)"
+            ></i>
           </li>
           <li class="task done">
             <div>
-              <i class="ph-duotone ph-check-circle check_btn"></i>
+              <i
+                class="ph-duotone ph-check-circle check_btn"
+                onclick="incompleteTask(event)"
+              ></i>
               <p class="risked">Limpar gaiolas</p>
             </div>
-            <i class="ph-duotone ph-trash delete_btn"></i>
+            <i
+              class="ph-duotone ph-trash delete_btn"
+              onclick="deleteTask(event)"
+            ></i>
           </li>
         </ul>
       </main>
     </div>
+
+    <script src="tasks.js"></script>
   </body>
 </html>
