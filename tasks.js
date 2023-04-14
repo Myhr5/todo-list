@@ -42,6 +42,7 @@ function createNewTaskEl(taskName, taskId) {
   doneIcon.classList.add("ph-duotone");
   doneIcon.classList.add("ph-check-circle");
   doneIcon.classList.add("check_btn");
+  doneIcon.classList.add("hidden");
   doneIcon.addEventListener("click", incompleteTask);
 
   //task name /p
@@ -59,8 +60,8 @@ function createNewTaskEl(taskName, taskId) {
   leftContent.appendChild(doneIcon);
   leftContent.appendChild(name);
 
-  leftContent.appendChild(leftContent);
-  leftContent.appendChild(deleteIcon);
+  task.appendChild(leftContent);
+  task.appendChild(deleteIcon);
 
   return task;
 }
