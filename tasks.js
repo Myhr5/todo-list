@@ -6,7 +6,7 @@ let taskData = [
   {
     id: uid(),
     name: "Crie uma nova tarefa",
-    toDo: false,
+    toDo: true,
   },
 ];
 
@@ -16,6 +16,23 @@ const tasklist = document.getElementById("tasks_list");
 const todoCounterText = document.getElementById("todo_count");
 const doneCounterText = document.getElementById("done_count");
 const emptyTasks = document.getElementById("empty_tasks");
+
+// get tasks from sessionStorage
+window.onload = savedTasks();
+
+function savedTasks(){
+  //check sessionStorage
+
+  //return if sessionStorage empty
+  if(sessionStorage.getItem('tasks') == null){  
+    taskData.length = 0; 
+    return;
+  }
+
+  // Tasks from sessionStorage in an array
+  taskData = JSON.parse(sessionStorage.getItem('tasks'));
+  console.log(taskData);
+}
 
 // empty tasks
 function verifyIfListIsEmpty() {
@@ -45,7 +62,6 @@ function counter() {
 verifyIfListIsEmpty();
 counter();
 
-//create new task element
 function createNewTaskEl(taskName, taskId) {
   // create task li
   let task = document.createElement("li");
@@ -106,13 +122,19 @@ function addTask(event) {
   };
 
   taskData.push(newTask);
+
+  sessionStorage.setItem("tasks", JSON.stringify(taskData));
+  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
+console.log(savedTasks);
+
   const taskElement = createNewTaskEl(newTask.name, newTask.id);
   tasklist.appendChild(taskElement);
 
   addTaskInput.value = "";
   counter();
   verifyIfListIsEmpty();
-}
+  }
+
 
 // complete task
 function completeTask(event) {
@@ -138,6 +160,10 @@ function completeTask(event) {
       item.toDo = false;
     }
   });
+
+  sessionStorage.setItem("tasks", JSON.stringify(taskData));
+  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
+console.log(savedTasks);
 
   counter();
 }
@@ -167,6 +193,10 @@ function incompleteTask(event) {
     }
   });
 
+  sessionStorage.setItem("tasks", JSON.stringify(taskData));
+  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
+console.log(savedTasks);
+
   counter();
 }
 
@@ -184,12 +214,45 @@ function deleteTask(event) {
   taskData = tasksWithoutDeletedOne;
   tasklist.removeChild(taskToDelete);
 
+  sessionStorage.setItem("tasks", JSON.stringify(taskData));
+  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
+console.log(savedTasks);
+
   counter();
   verifyIfListIsEmpty();
 }
 
 // sync HTML with taskData list
 for (const task of taskData) {
-  const taskItem = createNewTaskEl(task.name, task.id);
-  tasklist.appendChild(taskItem);
+
+  function syncHTML(){
+    const taskItem = createNewTaskEl(task.name, task.id);
+    tasklist.appendChild(taskItem);
+  }
+
+  if (task.toDo == false){
+
+    syncHTML();
+
+    const taskId = document.getElementById(task.id);
+    
+    let todoIcon = taskId.childNodes[0].childNodes[0];
+    todoIcon.classList.add("hidden");
+
+    const text = taskId.childNodes[0].childNodes[2];
+    text.classList.add("risked");
+
+    const doneIcon = taskId.childNodes[0].childNodes[1];
+    doneIcon.classList.remove("hidden");
+
+    taskId.classList.add("done");
+    taskId.classList.remove("todo");
+  
+  }else{
+    syncHTML();
+  }
+
 }
+
+
+
