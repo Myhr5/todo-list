@@ -24,6 +24,8 @@ function verifyIfListIsEmpty() {
   } else {
     emptyTasks.classList.add("hidden");
   }
+
+  sessionStorage.setItem("emptyTasks", emptyTasks.value);
 }
 
 function counter() {
@@ -40,6 +42,9 @@ function counter() {
   }
 
   doneCounterText.innerText = `${doneCounter}`;
+
+  sessionStorage.setItem("toDoCounter", todoCounterText.value);
+  sessionStorage.setItem("doneCounter", doneCounterText.value);
 }
 
 verifyIfListIsEmpty();
@@ -107,7 +112,8 @@ function addTask(event) {
 
   taskData.push(newTask);
   const taskElement = createNewTaskEl(newTask.name, newTask.id);
-  tasklist.appendChild(taskElement);
+
+  sessionStorage.setItem("tasklist", tasklist.appendChild(taskElement));
 
   addTaskInput.value = "";
   counter();
@@ -189,6 +195,7 @@ function deleteTask(event) {
 }
 
 // sync HTML with taskData list
+
 for (const task of taskData) {
   const taskItem = createNewTaskEl(task.name, task.id);
   tasklist.appendChild(taskItem);
