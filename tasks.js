@@ -20,17 +20,17 @@ const emptyTasks = document.getElementById("empty_tasks");
 // get tasks from sessionStorage
 window.onload = savedTasks();
 
-function savedTasks(){
+function savedTasks() {
   //check sessionStorage
 
   //return if sessionStorage empty
-  if(sessionStorage.getItem('tasks') == null){  
-    taskData.length = 0; 
+  if (sessionStorage.getItem("tasks") == null) {
+    taskData.length = 0;
     return;
   }
 
   // Tasks from sessionStorage in an array
-  taskData = JSON.parse(sessionStorage.getItem('tasks'));
+  taskData = JSON.parse(sessionStorage.getItem("tasks"));
   console.log(taskData);
 }
 
@@ -130,7 +130,7 @@ function addTask(event) {
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
   let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-console.log(savedTasks);
+  console.log(savedTasks);
 
   const taskElement = createNewTaskEl(newTask.name, newTask.id);
 
@@ -139,8 +139,7 @@ console.log(savedTasks);
   addTaskInput.value = "";
   counter();
   verifyIfListIsEmpty();
-  }
-
+}
 
 // complete task
 function completeTask(event) {
@@ -169,7 +168,7 @@ function completeTask(event) {
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
   let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-console.log(savedTasks);
+  console.log(savedTasks);
 
   counter();
 }
@@ -201,7 +200,7 @@ function incompleteTask(event) {
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
   let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-console.log(savedTasks);
+  console.log(savedTasks);
 
   counter();
 }
@@ -222,7 +221,7 @@ function deleteTask(event) {
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
   let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-console.log(savedTasks);
+  console.log(savedTasks);
 
   counter();
   verifyIfListIsEmpty();
@@ -231,18 +230,17 @@ console.log(savedTasks);
 // sync HTML with taskData list
 
 for (const task of taskData) {
-
-  function syncHTML(){
+  function syncHTML() {
     const taskItem = createNewTaskEl(task.name, task.id);
     tasklist.appendChild(taskItem);
   }
 
-  if (task.toDo == false){
-
+  // sync HTML of sessionStorage and add style
+  if (task.toDo == false) {
     syncHTML();
 
     const taskId = document.getElementById(task.id);
-    
+
     let todoIcon = taskId.childNodes[0].childNodes[0];
     todoIcon.classList.add("hidden");
 
@@ -254,12 +252,7 @@ for (const task of taskData) {
 
     taskId.classList.add("done");
     taskId.classList.remove("todo");
-  
-  }else{
+  } else {
     syncHTML();
   }
-
 }
-
-
-
