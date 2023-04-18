@@ -133,8 +133,7 @@ function addTask(event) {
   taskData.push(newTask);
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
-  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-  console.log(savedTasks);
+  console.log("sessionStorage updated!");
 
   const taskElement = createNewTaskEl(newTask.name, newTask.id);
 
@@ -171,8 +170,7 @@ function completeTask(event) {
   });
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
-  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-  console.log(savedTasks);
+  console.log("sessionStorage updated!");
 
   counter();
 }
@@ -203,8 +201,7 @@ function incompleteTask(event) {
   });
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
-  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-  console.log(savedTasks);
+  console.log("sessionStorage updated!");
 
   counter();
 }
@@ -224,8 +221,7 @@ function deleteTask(event) {
   tasklist.removeChild(taskToDelete);
 
   sessionStorage.setItem("tasks", JSON.stringify(taskData));
-  let savedTasks = JSON.parse(sessionStorage.getItem("tasks"));
-  console.log(savedTasks);
+  console.log("sessionStorage updated!");
 
   counter();
   verifyIfListIsEmpty();
@@ -272,15 +268,10 @@ function taskIsEmpty(taskName) {
 //check if task already exist
 function sameTask(taskName) {
   for (const task of taskData) {
-    let nameToString = task.name.toString();
-    console.log(nameToString);
-
-    if (task.name === taskName) {
+    if (task.name.toString() === taskName) {
       alert("Tarefa já cadastrada!!! Informe uma nova tarefa!");
-      console.log("true");
 
       return true;
     }
   }
-  console.log("teste1");
 }
