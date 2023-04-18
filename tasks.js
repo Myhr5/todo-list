@@ -120,6 +120,10 @@ function addTask(event) {
 
   const newTaskName = addTaskInput.value;
 
+  if (sameTask(newTaskName) || taskIsEmpty(newTaskName)) {
+    return;
+  }
+
   const newTask = {
     id: uid(),
     name: newTaskName,
@@ -241,7 +245,7 @@ for (const task of taskData) {
 
     const taskId = document.getElementById(task.id);
 
-    let todoIcon = taskId.childNodes[0].childNodes[0];
+    const todoIcon = taskId.childNodes[0].childNodes[0];
     todoIcon.classList.add("hidden");
 
     const text = taskId.childNodes[0].childNodes[2];
@@ -255,4 +259,28 @@ for (const task of taskData) {
   } else {
     syncHTML();
   }
+}
+
+//return if task is empty
+function taskIsEmpty(taskName) {
+  if (taskName === "") {
+    alert("Tarefa vazia!!! Por favor adicione uma tarefa!");
+    return true;
+  }
+}
+
+//check if task already exist
+function sameTask(taskName) {
+  for (const task of taskData) {
+    let nameToString = task.name.toString();
+    console.log(nameToString);
+
+    if (task.name === taskName) {
+      alert("Tarefa já cadastrada!!! Informe uma nova tarefa!");
+      console.log("true");
+
+      return true;
+    }
+  }
+  console.log("teste1");
 }
